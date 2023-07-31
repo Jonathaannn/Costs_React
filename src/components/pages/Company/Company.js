@@ -1,4 +1,5 @@
-import Container from "../layouts/Container/Container";
+import Container from "../../layouts/Container/Container";
+import styles from "./Company.module.css"
 
 function Company () {
     return (
