@@ -1,14 +1,14 @@
 import Container from "../layouts/Container/Container";
 
-function Contact () {
+function Project () {
     return (
         <>
         <Container customClass="min-height">
-            <h1>Contact</h1>
+            <h1>Projects</h1>
             <p>Conteúdo da página</p>
         </Container>
         </>
     )
 }
 
-export default Contact
+export default Project

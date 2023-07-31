@@ -1,4 +1,4 @@
-import Container from "../layouts/Container";
+import Container from "../layouts/Container/Container";
 
 function NewProject () {
     return (
