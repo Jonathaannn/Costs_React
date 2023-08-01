@@ -1,15 +1,25 @@
+import { useLocation } from "react-router-dom";
 import Container from "../../layouts/Container/Container";
-import styles from "./Project.module.css"
+import Message from "../../layouts/Message/Message";
+import styles from "./Project.module.css";
 
-function Project () {
-    return (
-        <>
-        <Container customClass="min-height">
-            <h1>Projects</h1>
-            <p>Conteúdo da página</p>
-        </Container>
-        </>
-    )
+function Project() {
+  const location = useLocation();
+  let message = "";
+  if (location.state) {
+    message = location.state.message;
+  }
+
+  return (
+    <>
+      <Container customClass="min-height">
+        <div>
+          <h1>Projects</h1>
+          {message && <Message type="succes" text={message} />}
+        </div>
+      </Container>
+    </>
+  );
 }
 
-export default Project
+export default Project;
