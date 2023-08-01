@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Container from "../../layouts/Container/Container";
-import ProjectForm from "../../project/ProjectForm";
+import ProjectForm from "../../project/ProjectForm/ProjectForm";
 import styles from "./NewProject.module.css";
 
 function NewProject() {
