@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Project-X",
-      "budget": "32000",
+      "budget": "32500",
       "category": {
         "id": "1",
         "name": "Infra"
