@@ -1,13 +1,15 @@
 import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import LinkButton from "../../layouts/LinkButton/LinkButton";
 import Container from "../../layouts/Container/Container";
 import Message from "../../layouts/Message/Message";
+import Loading from "../../layouts/Loading/Loading";
 import styles from "./Project.module.css";
-import LinkButton from "../../layouts/LinkButton/LinkButton";
 import ProjectCard from "../../project/ProjectCard/ProjectCard";
-import { useState, useEffect } from "react";
 
 function Project() {
   const [projects, setProjects] = useState([]);
+  const [removeLoader, setRemoveLoader] = useState(false);
 
   const location = useLocation();
   let message = "";
@@ -16,17 +18,20 @@ function Project() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/projects", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProjects(data);
+    setTimeout(() => {
+      fetch("http://localhost:5000/projects", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .catch((error) => console.log(error));
+        .then((res) => res.json())
+        .then((data) => {
+          setProjects(data);
+          setRemoveLoader(true);
+        })
+        .catch((error) => console.log(error));
+    }, 300);
   }, []);
 
   return (
@@ -49,6 +54,10 @@ function Project() {
                   category={project.category.name}
                 />
               ))}
+            {!removeLoader && <Loading />}
+            {removeLoader && projects.length === 0 && (
+              <h2>Sem projetos no momento :)</h2>
+            )}
           </Container>
         </div>
       </Container>
