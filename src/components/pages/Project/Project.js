@@ -10,6 +10,7 @@ import ProjectCard from "../../project/ProjectCard/ProjectCard";
 function Project() {
   const [projects, setProjects] = useState([]);
   const [removeLoader, setRemoveLoader] = useState(false);
+  const [projectMessage, setProjectMessage] = useState("");
 
   const location = useLocation();
   let message = "";
@@ -34,6 +35,21 @@ function Project() {
     }, 300);
   }, []);
 
+  function removeProject(id) {
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setProjects(projects.filter((project) => project.id !== id));
+        setProjectMessage("Projeto removido com sucesso!");
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <>
       <Container customClass="min-height">
@@ -43,6 +59,7 @@ function Project() {
             <LinkButton to="/newproject" text="Criar projeto" />
           </div>
           {message && <Message type="succes" text={message} />}
+          {projectMessage && <Message type="succes" text={projectMessage} />}
           <Container customClass="start">
             {projects.length > 0 &&
               projects.map((project) => (
@@ -52,6 +69,7 @@ function Project() {
                   name={project.name}
                   budget={project.budget}
                   category={project.category.name}
+                  handleRemove={removeProject}
                 />
               ))}
             {!removeLoader && <Loading />}
