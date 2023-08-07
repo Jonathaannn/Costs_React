@@ -7,8 +7,21 @@
         "id": "1",
         "name": "Infra"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 11700,
+      "services": [
+        {
+          "name": "ET Bilu",
+          "cost": "10500",
+          "description": "Ele vai trazer o conhecimento necessário",
+          "id": "c833f67d-16f2-4698-a1d5-8d8fc4c83d08"
+        },
+        {
+          "name": "ET Bilu",
+          "cost": "1200",
+          "description": "Ele vai trazer o conhecimento necessário",
+          "id": "a9eb2e90-2bfb-41ae-abf6-9a3b67743fda"
+        }
+      ],
       "id": 1
     }
   ],
